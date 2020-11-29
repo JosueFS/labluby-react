@@ -14,12 +14,12 @@ export const Container = styled.footer`
 
   border-radius: 16px 16px 0 0;
 
+  z-index: 3;
+
   & > figure {
     display: flex;
     align-items: center;
     flex-flow: column wrap;
-    /* width: 40px;
-    height: 48px; */
   }
 
   & > figure > svg {

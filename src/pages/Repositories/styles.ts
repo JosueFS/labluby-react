@@ -23,6 +23,7 @@ export const Header = styled.header`
     text-align: center;
   }
 `;
+
 export const RepositoryList = styled.ul`
   position: relative;
   list-style: none;
