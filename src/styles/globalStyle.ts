@@ -12,6 +12,9 @@ export default createGlobalStyle`
         background: #292929;
         color: #FFF;
         -webkit-font-smoothing: antialiased;
+        @media screen and (max-width: 768px) {
+          padding-bottom: 80px;
+        }
     }
 
     body, input, button {
@@ -19,9 +22,9 @@ export default createGlobalStyle`
     }
 
     #root {
-      height: 100vh;
+      height: 100%;
       min-width: 360px;
-      max-width: 100vw;
+      /* max-width: 100vw; */
 
       margin: 0 auto;
     }
