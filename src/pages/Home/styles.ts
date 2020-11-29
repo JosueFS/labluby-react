@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
+  height: 70vh;
 
   & > svg {
     margin-bottom: 24px;
@@ -35,7 +35,6 @@ export const Container = styled.div`
     line-height: 56px;
     font-weight: bold;
     font-size: 20px;
-    text-decoration: none;
     text-align: center;
 
     &:hover {

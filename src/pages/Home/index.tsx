@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiFillGithub } from 'react-icons/ai';
 import { RiArrowRightLine } from 'react-icons/ri';
 
-import { Container, Input, Button } from './styles';
+import { Container, Input } from './styles';
 
 const Dashboard: React.FC = () => {
   return (
