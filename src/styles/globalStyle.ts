@@ -10,6 +10,7 @@ export default createGlobalStyle`
 
     body {
         background: #292929;
+        color: #FFF;
         -webkit-font-smoothing: antialiased;
     }
 
@@ -18,12 +19,28 @@ export default createGlobalStyle`
     }
 
     #root {
-      max-width: 960px;
+      height: 100vh;
+      min-width: 360px;
+      max-width: 100vw;
+
       margin: 0 auto;
-      padding: 40px 20px;
     }
 
     button {
       cursor: pointer;
+    }
+
+
+    pre, code{
+      max-width: 100vw;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      text-align: justify;
+    }
+
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 `;
