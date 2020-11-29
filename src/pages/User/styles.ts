@@ -61,7 +61,7 @@ export const Profile = styled.div`
 
   & h2 {
     font-size: 26px;
-    box-shadow: -10px 0 0 #292929, -10px 0 0 #292929, -20px 0 0 #ffce00;
+    box-shadow: -10px 0 0 #292929, -14px 0 0 #292929, -24px 0 0 #ffce00;
   }
 
   & h1 {
