@@ -9,14 +9,14 @@ A aplicação sera uma PWA que funcionará em cima da api do github [Documentaç
 
 ### Requisitos não funcionais
 
-- [ ] O aplicativo deve usar reactjs.
-- [ ] Você deve gerenciar suas rotas com o react-router.
+- [x] O aplicativo deve usar reactjs.
+- [x] Você deve gerenciar suas rotas com o react-router.
 - [ ] Você deve gerenciar todo o estado do aplicativo com redux ou Context Api.
-- [ ] Para estilizar o aplicativo, adoraríamos ver você usando componentes estilizados, mas não é obrigatório.
+- [x] Para estilizar o aplicativo, adoraríamos ver você usando componentes estilizados, mas não é obrigatório.
 
 ### Requisitos funcionais
 
-- [ ] Você deve permitir que um usuário seja autenticado buscando pelo username do github
+- [x] Você deve permitir que um usuário seja autenticado buscando pelo username do github
 - [ ] Você deve armazenas as informações de (login, name, email, location, company, bio, avatar_url, followers_url, following_url, organizations_url, starred_url, public_repos, public_gists, followers, following)
 - [ ] Você deve possuir uma navegação por abas com items ("Início", "Repositórios", "Seguidores", "Seguindo")
 - [ ] Quando clicado nas abas deve ser exibido as listagens respectivas de ("Início", Repositórios: repos_url, Seguidores: followers_url e Seguindo: following_url)
