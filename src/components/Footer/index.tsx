@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BiHomeAlt } from 'react-icons/bi';
 import { FiGithub, FiUsers } from 'react-icons/fi';
 import { RiUserStarLine } from 'react-icons/ri';
@@ -8,25 +9,25 @@ import { Container } from './styles';
 const Footer: React.FC = () => {
   return (
     <Container>
-      <figure>
+      <Link to="/user">
         <BiHomeAlt size={28} />
-        <figcaption>Home</figcaption>
-      </figure>
+        <span>Home</span>
+      </Link>
 
-      <figure>
+      <Link to="/repositories">
         <FiGithub size={28} />
-        <figcaption>Repos</figcaption>
-      </figure>
+        <span>Repos</span>
+      </Link>
 
-      <figure>
+      <Link to="/follows">
         <FiUsers size={28} />
-        <figcaption>Seguidores</figcaption>
-      </figure>
+        <span>Seguidores</span>
+      </Link>
 
-      <figure>
+      <Link to="/follows">
         <RiUserStarLine size={28} />
-        <figcaption>Seguindo</figcaption>
-      </figure>
+        <span>Seguindo</span>
+      </Link>
     </Container>
   );
 };

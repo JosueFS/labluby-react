@@ -14,10 +14,15 @@ export const Header = styled.header`
   background: #1f1f1f;
 
   line-height: 64px;
-  & > svg {
-    position: absolute;
-    left: 16px;
+  & > a {
+    height: 24px;
+    & > svg {
+      position: absolute;
+      left: 16px;
+      vertical-align: middle;
+    }
   }
+
   & > strong {
     font-size: 16px;
     text-align: center;
@@ -31,10 +36,10 @@ export const RepositoryList = styled.ul`
   line-height: 24px;
 
   & > li {
-    margin: 28px;
+    padding-left: 10px;
+    border-left: 8px solid #ffce00;
     & > h3 {
       font-size: 20px;
-      box-shadow: -10px 0 0 #292929, -20px 0 0 #292929, -28px 0 0 #ffce00;
     }
 
     & > span {
@@ -67,7 +72,7 @@ export const RepositoryList = styled.ul`
     width: 100vw;
     height: 1px;
 
-    /* margin: 32px 0; */
+    margin: 24px 0;
 
     background: #7070705a;
     border: none;

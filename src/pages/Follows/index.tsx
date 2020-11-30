@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { RiArrowLeftLine, RiArrowRightLine } from 'react-icons/ri';
 
 import { Container, Header, FollowList, Avatar } from './styles';
@@ -7,7 +8,9 @@ const Follows: React.FC = () => {
   return (
     <Container>
       <Header>
-        <RiArrowLeftLine size={24} />
+        <Link to="user">
+          <RiArrowLeftLine size={24} />
+        </Link>
         <strong>77 seguidores</strong>
       </Header>
       <FollowList>

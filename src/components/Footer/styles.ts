@@ -16,17 +16,17 @@ export const Container = styled.footer`
 
   z-index: 3;
 
-  & > figure {
+  & > a {
     display: flex;
     align-items: center;
     flex-flow: column wrap;
   }
 
-  & > figure > svg {
+  & > a > svg {
     color: #a5a5a5;
   }
 
-  & > figure > figcaption {
+  & > a > span {
     color: #969696;
     font-size: 16px;
     line-height: 24px;

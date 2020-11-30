@@ -32,19 +32,22 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
 
-  & > a {
-    display: flex;
-    line-height: 48px;
-    & > svg {
-      align-self: center;
-      margin-left: 12px;
-    }
-
-    &:visited {
-      color: #fff;
-    }
+export const Logout = styled.span`
+  display: flex;
+  align-items: center;
+  line-height: 48px;
+  & > svg {
+    align-self: center;
+    margin-left: 12px;
   }
+
+  &:visited {
+    color: #fff;
+  }
+
+  cursor: pointer;
 `;
 
 export const Profile = styled.div`

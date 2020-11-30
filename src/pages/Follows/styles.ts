@@ -14,10 +14,15 @@ export const Header = styled.header`
   background: #1f1f1f;
 
   line-height: 64px;
-  & > svg {
-    position: absolute;
-    left: 16px;
+  & > a {
+    height: 24px;
+    & > svg {
+      position: absolute;
+      left: 16px;
+      vertical-align: middle;
+    }
   }
+
   & > strong {
     font-size: 16px;
     text-align: center;
@@ -34,14 +39,13 @@ export const FollowList = styled.ul`
     display: flex;
     align-items: center;
 
-    margin: 16px;
+    padding-left: 10px;
+    border-left: 8px solid #ffce00;
 
     & > strong {
       margin-left: 32px;
       font-size: 16px;
       line-height: 32px;
-      box-shadow: -10px 0 0 #292929, -94px 0 0 #292929, -104px 0 0 #ffce00;
-      z-index: 1;
     }
 
     & > svg {
@@ -53,6 +57,8 @@ export const FollowList = styled.ul`
   & > hr {
     width: 100vw;
     height: 1px;
+
+    margin: 24px 0;
 
     background: #7070705a;
     border: none;

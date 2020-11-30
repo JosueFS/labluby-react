@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { RiArrowLeftLine, RiStarLine } from 'react-icons/ri';
 import { FiUnlock, FiLock } from 'react-icons/fi';
 
@@ -8,7 +9,9 @@ const Repositories: React.FC = () => {
   return (
     <Container>
       <Header>
-        <RiArrowLeftLine size={24} />
+        <Link to="user">
+          <RiArrowLeftLine size={24} />
+        </Link>
         <strong>707 repositórios</strong>
       </Header>
       <RepositoryList>
