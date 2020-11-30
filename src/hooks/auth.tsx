@@ -11,6 +11,12 @@ interface IUser {
   following: number;
   public_repos: number;
   bio: string;
+  company: string;
+  followers_url: string;
+  following_url: string;
+  organizations_url: string;
+  starred_url: string;
+  public_gists: string;
 }
 
 interface IAuthContextData {
