@@ -3,12 +3,16 @@ import { BrowserRouter } from 'react-router-dom';
 
 import GlobalStyle from './styles/globalStyle';
 
+import { AuthProvider } from './hooks/auth';
+
 import Footer from './components/Footer';
 import Routes from './routes';
 
 const App: React.FC = () => (
   <BrowserRouter>
-    <Routes />
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
 
     <Footer />
     <GlobalStyle />
