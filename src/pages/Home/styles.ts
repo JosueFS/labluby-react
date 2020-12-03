@@ -21,9 +21,6 @@ export const Container = styled.div`
     font-size: 20px;
     margin-left: 20px;
   }
-
-  & > a {
-  }
 `;
 
 export const Button = styled.button`

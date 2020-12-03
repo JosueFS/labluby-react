@@ -2,14 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-  height: 100%;
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
-
-  @media screen and (min-width: 768px) {
-    justify-content: space-between;
-  }
 
   & > div {
     display: flex;
@@ -17,9 +12,13 @@ export const Container = styled.div`
 
     & + div {
       display: none;
-      @media screen and (min-width: 768px) {
-        display: initial;
-      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+    & > div + div {
+      display: initial;
     }
   }
 `;
@@ -51,16 +50,16 @@ export const Logout = styled.span`
 `;
 
 export const Profile = styled.div`
-  @media screen and (min-width: 768px) {
-    flex: 0 0 35%;
-    max-width: 300px;
-  }
-
+  width: 100%;
   display: flex;
-  justify-content: start;
   flex-direction: column;
 
   font-size: 16px;
+
+  @media screen and (min-width: 768px) {
+    flex: 0 0 35%;
+    min-width: 300px;
+  }
 
   & h2 {
     font-size: 26px;
@@ -127,8 +126,8 @@ export const Bio = styled.div`
 
 export const ReadMe = styled.div`
   @media screen and (min-width: 768px) {
-    flex: 0 0 50%;
+    flex: 0 0 55%;
   }
-
+  margin-left: 32px;
   font-size: 16px;
 `;
