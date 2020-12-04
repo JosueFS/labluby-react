@@ -18,6 +18,7 @@ export const Container = styled.footer`
 
   & > a {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     flex-flow: column wrap;
   }
@@ -29,6 +30,14 @@ export const Container = styled.footer`
   & > a > span {
     color: #969696;
     font-size: 16px;
+    font-weight: bold;
     line-height: 24px;
+  }
+
+  .current {
+    span,
+    svg {
+      color: #212121;
+    }
   }
 `;
