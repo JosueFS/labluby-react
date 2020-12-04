@@ -1,92 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { RiArrowLeftLine, RiArrowRightLine } from 'react-icons/ri';
+import { useLocation } from 'react-router-dom';
+import { RiArrowRightLine } from 'react-icons/ri';
 
-import { Container, Header, FollowList, Avatar } from './styles';
+import { Container, FollowList, Avatar } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 const Follows: React.FC = () => {
+  const { followers } = useAuth();
+  const { pathname } = useLocation();
+
   return (
     <Container>
-      <Header>
-        <Link to="user">
-          <RiArrowLeftLine size={24} />
-        </Link>
-        <strong>77 seguidores</strong>
-      </Header>
       <FollowList>
-        <li>
-          <Avatar
-            alt="user"
-            src="https://avatars0.githubusercontent.com/u/45906601?s=460&v=4"
-          />
-          <strong>#josuefs</strong>
-          <RiArrowRightLine size={24} />
-        </li>
+        {followers.map(follower => (
+          <React.Fragment key={follower.login}>
+            <li key={follower.login}>
+              <Avatar alt={follower.login} src={follower.avatar_url} />
+              <strong>{`#${follower.login}`}</strong>
+              <RiArrowRightLine size={24} />
+            </li>
 
-        <hr />
-        <li>
-          <Avatar
-            alt="user"
-            src="https://avatars0.githubusercontent.com/u/45906601?s=460&v=4"
-          />
-          <strong>#josuefs</strong>
-          <RiArrowRightLine size={24} />
-        </li>
-
-        <hr />
-        <li>
-          <Avatar
-            alt="user"
-            src="https://avatars0.githubusercontent.com/u/45906601?s=460&v=4"
-          />
-          <strong>#josuefs</strong>
-          <RiArrowRightLine size={24} />
-        </li>
-
-        <hr />
-        <li>
-          <Avatar
-            alt="user"
-            src="https://avatars0.githubusercontent.com/u/45906601?s=460&v=4"
-          />
-          <strong>#josuefs</strong>
-          <RiArrowRightLine size={24} />
-        </li>
-
-        <hr />
-
-        <li>
-          <Avatar
-            alt="user"
-            src="https://avatars0.githubusercontent.com/u/45906601?s=460&v=4"
-          />
-          <strong>#josuefs</strong>
-          <RiArrowRightLine size={24} />
-        </li>
-
-        <hr />
-
-        <li>
-          <Avatar
-            alt="user"
-            src="https://avatars0.githubusercontent.com/u/45906601?s=460&v=4"
-          />
-          <strong>#josuefs</strong>
-          <RiArrowRightLine size={24} />
-        </li>
-
-        <hr />
-
-        <li>
-          <Avatar
-            alt="user"
-            src="https://avatars0.githubusercontent.com/u/45906601?s=460&v=4"
-          />
-          <strong>#josuefs</strong>
-          <RiArrowRightLine size={24} />
-        </li>
-
-        <hr />
+            <hr />
+          </React.Fragment>
+        ))}
       </FollowList>
     </Container>
   );

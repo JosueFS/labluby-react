@@ -12,15 +12,31 @@ interface IUser {
   public_repos: number;
   bio: string;
   company: string;
-  followers_url: string;
-  following_url: string;
+  repos_url: string;
+  url: string;
   organizations_url: string;
   starred_url: string;
   public_gists: string;
 }
 
+interface IRepo {
+  id: number;
+  name: string;
+  description: string;
+  stargazers_count: number;
+  forks_count: number;
+}
+
+interface IFollow {
+  login: string;
+  avatar_url: string;
+}
+
 interface IAuthContextData {
   user: IUser;
+  repos: IRepo[];
+  followers: IFollow[];
+  following: IFollow[];
   signIn(username: string): Promise<void>;
   signOut(): void;
 }
@@ -38,24 +54,79 @@ const AuthProvider: React.FC = ({ children }) => {
     },
   );
 
-  const signIn = useCallback(async (username: string) => {
-    const response = await api.get<IUser>(`users/${username}`);
+  const [repos, setRepos] = useState<IRepo[]>((): IRepo[] => {
+    const initialRepos = localStorage.getItem('@GithubProfiles:repos');
 
-    const { data } = response;
+    if (initialRepos) return JSON.parse(initialRepos);
+
+    return {} as IRepo[];
+  });
+
+  const [followers, setFollowers] = useState<IFollow[]>((): IFollow[] => {
+    const initialFollowers = localStorage.getItem('@GithubProfiles:followers');
+
+    if (initialFollowers) return JSON.parse(initialFollowers);
+
+    return {} as IFollow[];
+  });
+
+  const [following, setFollowing] = useState<IFollow[]>((): IFollow[] => {
+    const initialFollowing = localStorage.getItem('@GithubProfiles:following');
+
+    if (initialFollowing) return JSON.parse(initialFollowing);
+
+    return {} as IFollow[];
+  });
+
+  const signIn = useCallback(async (username: string) => {
+    const [
+      { data },
+      reposResponse,
+      followersResponse,
+      followingResponse,
+    ] = await Promise.all([
+      api.get<IUser>(`users/${username}`),
+      api.get<IRepo[]>(`users/${username}/repos`),
+      api.get<IFollow[]>(`users/${username}/followers`),
+      api.get<IFollow[]>(`/users/${username}/following`),
+    ]);
 
     localStorage.setItem('@GithubProfiles:user', JSON.stringify(data));
+    localStorage.setItem(
+      '@GithubProfiles:repos',
+      JSON.stringify(reposResponse.data),
+    );
+    localStorage.setItem(
+      '@GithubProfiles:followers',
+      JSON.stringify(followersResponse.data),
+    );
+    localStorage.setItem(
+      '@GithubProfiles:following',
+      JSON.stringify(followingResponse.data),
+    );
 
     setUser(data);
+    setRepos(reposResponse.data);
+    setFollowers(followersResponse.data);
+    setFollowing(followingResponse.data);
   }, []);
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@GithubProfiles:user');
+    localStorage.removeItem('@GithubProfiles:repos');
+    localStorage.removeItem('@GithubProfiles:followers');
+    localStorage.removeItem('@GithubProfiles:following');
 
     setUser({} as IUser);
+    setRepos({} as IRepo[]);
+    setFollowers({} as IFollow[]);
+    setFollowing({} as IFollow[]);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ user, repos, followers, following, signIn, signOut }}
+    >
       {children}
     </AuthContext.Provider>
   );
