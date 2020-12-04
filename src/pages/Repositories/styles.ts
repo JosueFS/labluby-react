@@ -4,30 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const Header = styled.header`
-  width: 100%;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: #1f1f1f;
-
-  line-height: 64px;
-  & > a {
-    height: 24px;
-    & > svg {
-      position: absolute;
-      left: 16px;
-      vertical-align: middle;
-    }
-  }
-
-  & > strong {
-    font-size: 16px;
-    text-align: center;
-  }
-`;
 
 export const RepositoryList = styled.ul`
   position: relative;
@@ -37,7 +13,7 @@ export const RepositoryList = styled.ul`
 
   & > li {
     padding-left: 10px;
-    border-left: 8px solid #ffce00;
+    /* border-left: 8px solid #ffce00; */
     & > h3 {
       font-size: 20px;
     }

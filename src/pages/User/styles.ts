@@ -23,16 +23,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Header = styled.header`
-  height: 48px;
-  flex: 0 0 90%;
-
-  margin: 16px 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 export const Logout = styled.span`
   display: flex;
   align-items: center;
