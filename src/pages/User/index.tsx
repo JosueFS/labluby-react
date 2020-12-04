@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import ReactMarkdown from 'react-markdown';
 
 import {
@@ -12,6 +11,7 @@ import {
   ReadMe,
 } from './styles';
 
+import nFormatter from '../../utils/numberFormat';
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 
@@ -28,7 +28,7 @@ const User: React.FC = () => {
       .then(response => {
         setReadme(response.data);
       });
-  }, []);
+  }, [user.login]);
 
   return (
     <Container>
@@ -43,17 +43,17 @@ const User: React.FC = () => {
 
         <ProfileInfo>
           <div>
-            <h1>{user.followers}</h1>
+            <h1>{nFormatter(user.followers, 1)}</h1>
             <span>Seguidores</span>
           </div>
 
           <div>
-            <h1>{user.following}</h1>
+            <h1>{nFormatter(user.following, 1)}</h1>
             <span>Seguindo</span>
           </div>
 
           <div>
-            <h1>{user.public_repos}</h1>
+            <h1>{nFormatter(user.public_repos, 1)}</h1>
             <span>Repos</span>
           </div>
         </ProfileInfo>
