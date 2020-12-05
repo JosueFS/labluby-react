@@ -14,8 +14,16 @@ const Routes: React.FC = () => {
       <Route path="/" exact component={SignIn} />
       <Route path="/user" component={User} isPrivate />
       <Route path="/repositories" component={Repositories} isPrivate />
-      <Route path="/followers" component={Follows} isPrivate />
-      <Route path="/following" component={Follows} isPrivate />
+      <Route
+        path="/followers"
+        component={props => <Follows {...props} isFollowersPage />}
+        isPrivate
+      />
+      <Route
+        path="/following"
+        component={props => <Follows {...props} isFollowersPage={false} />}
+        isPrivate
+      />
     </Switch>
   );
 };
