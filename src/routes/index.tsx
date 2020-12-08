@@ -12,7 +12,8 @@ const Routes: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/user" component={props => <User {...props} />} isPrivate />
+      <Route path="/user" exact component={User} isPrivate />
+      <Route path="/user/:username" exact component={User} isPrivate />
       <Route path="/repositories" component={Repositories} isPrivate />
       <Route
         path="/followers"

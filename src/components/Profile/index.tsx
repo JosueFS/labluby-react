@@ -22,6 +22,8 @@ interface IUserProps {
 const Profile: React.FC<IUserProps> = ({ user }) => {
   const [readme, setReadme] = useState('');
 
+  console.log(user);
+
   useEffect(() => {
     api
       .get(

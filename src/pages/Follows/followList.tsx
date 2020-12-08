@@ -21,7 +21,10 @@ const FollowList: React.FC<IFollowListProps> = ({ follows }) => {
             <strong>{`#${follower.login}`}</strong>
             <Link
               onClick={() => loadProfile(follower.login)}
-              to={{ pathname: `/user`, state: follower.login }}
+              to={{
+                pathname: `/user/${follower.login}`,
+                state: follower.login,
+              }}
             >
               <RiArrowRightLine size={24} />
             </Link>

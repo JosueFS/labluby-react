@@ -34,20 +34,20 @@ const Header: React.FC = () => {
       default:
         return (
           <>
-            {state !== user.login ? (
-              <HomeHeader>
-                <strong>#{state}</strong>
-                <Logout onClick={() => signIn(String(state))}>
-                  Salvar
-                  <MdExitToApp size={24} color="#5CBC29" />
-                </Logout>
-              </HomeHeader>
-            ) : (
+            {state === user.login || state === undefined ? (
               <HomeHeader>
                 <strong>#{user.login}</strong>
                 <Logout onClick={signOut}>
                   Sair
                   <MdExitToApp size={24} color="#D03434" />
+                </Logout>
+              </HomeHeader>
+            ) : (
+              <HomeHeader>
+                <strong>#{state}</strong>
+                <Logout onClick={() => signIn(String(state))}>
+                  Salvar
+                  <MdExitToApp size={24} color="#5CBC29" />
                 </Logout>
               </HomeHeader>
             )}
