@@ -1,7 +1,7 @@
 import React from 'react';
-import { RiArrowRightLine } from 'react-icons/ri';
 
-import { Container, FollowList, Avatar } from './styles';
+import { Container } from './styles';
+import FollowList from './followList';
 import { useAuth } from '../../hooks/auth';
 
 interface IFollowsProps {
@@ -14,33 +14,9 @@ const Follows: React.FC<IFollowsProps> = ({ isFollowersPage }) => {
   return (
     <Container>
       {isFollowersPage ? (
-        <FollowList>
-          {followers.map(follower => (
-            <React.Fragment key={follower.login}>
-              <li key={follower.login}>
-                <Avatar alt={follower.login} src={follower.avatar_url} />
-                <strong>{`#${follower.login}`}</strong>
-                <RiArrowRightLine size={24} />
-              </li>
-
-              <hr />
-            </React.Fragment>
-          ))}
-        </FollowList>
+        <FollowList follows={followers} />
       ) : (
-        <FollowList>
-          {following.map(f => (
-            <React.Fragment key={f.login}>
-              <li key={f.login}>
-                <Avatar alt={f.login} src={f.avatar_url} />
-                <strong>{`#${f.login}`}</strong>
-                <RiArrowRightLine size={24} />
-              </li>
-
-              <hr />
-            </React.Fragment>
-          ))}
-        </FollowList>
+        <FollowList follows={following} />
       )}
     </Container>
   );

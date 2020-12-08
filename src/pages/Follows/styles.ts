@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const FollowList = styled.ul`
+export const List = styled.ul`
   list-style: none;
   margin-top: 8px;
   line-height: 24px;
