@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
       {isLogged && (
         <Container>
           <Link
-            to="/user"
+            to={{ pathname: `/user`, state: user.login }}
             className={location.pathname === '/user' ? 'current' : ''}
           >
             <BiHomeAlt size={28} />
