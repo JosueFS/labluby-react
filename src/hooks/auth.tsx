@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
-interface IUser {
+export interface IUser {
   login: string;
   avatar_url: string;
   name: string;
@@ -27,17 +27,19 @@ interface IRepo {
   forks_count: number;
 }
 
-interface IFollow {
+export interface IFollow {
   login: string;
   avatar_url: string;
 }
 
 interface IAuthContextData {
   user: IUser;
+  alternativeUser: IUser;
   repos: IRepo[];
   followers: IFollow[];
   following: IFollow[];
   signIn(username: string): Promise<void>;
+  loadProfile(username: string): Promise<void>;
   signOut(): void;
 }
 
@@ -47,6 +49,18 @@ const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<IUser>(
     (): IUser => {
       const initialUser = localStorage.getItem('@GithubProfiles:user');
+
+      if (initialUser) return JSON.parse(initialUser);
+
+      return {} as IUser;
+    },
+  );
+
+  const [alternativeUser, setAlternativeUser] = useState<IUser>(
+    (): IUser => {
+      const initialUser = localStorage.getItem(
+        '@GithubProfiles:alternativeUser',
+      );
 
       if (initialUser) return JSON.parse(initialUser);
 
@@ -116,16 +130,38 @@ const AuthProvider: React.FC = ({ children }) => {
     localStorage.removeItem('@GithubProfiles:repos');
     localStorage.removeItem('@GithubProfiles:followers');
     localStorage.removeItem('@GithubProfiles:following');
+    localStorage.removeItem('@GithubProfiles:alternativeUser');
 
     setUser({} as IUser);
     setRepos({} as IRepo[]);
     setFollowers({} as IFollow[]);
     setFollowing({} as IFollow[]);
+    setAlternativeUser({} as IUser);
+  }, []);
+
+  const loadProfile = useCallback(async (username: string) => {
+    const { data } = await api.get<IUser>(`users/${username}`);
+
+    localStorage.setItem(
+      '@GithubProfiles:alternativeUser',
+      JSON.stringify(data),
+    );
+
+    setAlternativeUser(data);
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user, repos, followers, following, signIn, signOut }}
+      value={{
+        user,
+        alternativeUser,
+        repos,
+        followers,
+        following,
+        signIn,
+        signOut,
+        loadProfile,
+      }}
     >
       {children}
     </AuthContext.Provider>
